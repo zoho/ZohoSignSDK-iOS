@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		54651A4726CA487300E2FF55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54651A4A26CA487300E2FF55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		54651A4C26CA487300E2FF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54651A5226CA9C2900E2FF55 /* ZohoSignSDK.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = ZohoSignSDK.podspec; path = ../../ZohoSignSDK.podspec; sourceTree = "<group>"; };
 		6E9E0BD6C6A9BDBC72B9F1D4 /* Pods-ZohoSignSDK-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZohoSignSDK-Example.debug.xcconfig"; path = "Target Support Files/Pods-ZohoSignSDK-Example/Pods-ZohoSignSDK-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A479C37B5AFE99FFCC946606 /* Pods-ZohoSignSDK-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZohoSignSDK-Example.release.xcconfig"; path = "Target Support Files/Pods-ZohoSignSDK-Example/Pods-ZohoSignSDK-Example.release.xcconfig"; sourceTree = "<group>"; };
 		BDDEA6F70F9B87804144253D /* Pods_ZohoSignSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZohoSignSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -80,6 +81,7 @@
 		54651A3D26CA487000E2FF55 /* ZohoSignSDK-Example */ = {
 			isa = PBXGroup;
 			children = (
+				54651A5226CA9C2900E2FF55 /* ZohoSignSDK.podspec */,
 				54651A3E26CA487000E2FF55 /* AppDelegate.swift */,
 				54651A4026CA487000E2FF55 /* SceneDelegate.swift */,
 				54651A4226CA487000E2FF55 /* ViewController.swift */,
@@ -102,6 +104,7 @@
 				54651A3726CA487000E2FF55 /* Sources */,
 				54651A3826CA487000E2FF55 /* Frameworks */,
 				54651A3926CA487000E2FF55 /* Resources */,
+				47F9789260981DF6FE739D6A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -178,6 +181,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47F9789260981DF6FE739D6A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZohoSignSDK-Example/Pods-ZohoSignSDK-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZohoSignSDK-Example/Pods-ZohoSignSDK-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZohoSignSDK-Example/Pods-ZohoSignSDK-Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
