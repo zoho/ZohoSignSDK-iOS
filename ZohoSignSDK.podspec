@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Custom', :file => 'LICENSE' }
   s.author           = { 'ME Mobile' => 'memobile@zohocorp.com' }
-  s.source           = { :http => 'https://github.com/zoho/ZohoSignSDK-iOS/archive/refs/heads/master.zip'}
+  s.source           = { :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git', :tag => s.version }
   s.social_media_url = 'https://twitter.com/zohosign'
 
   s.ios.deployment_target = '12.0'
