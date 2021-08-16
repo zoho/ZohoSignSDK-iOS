@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Custom', :file => 'LICENSE' }
   s.author           = { 'ME Mobile' => 'memobile@zohocorp.com' }
-  s.source           = { :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git', :tag => s.version.to_s }
+  s.source           = { :http => 'https://github.com/zoho/ZohoSignSDK-iOS/archive/refs/heads/master.zip'}
   s.social_media_url = 'https://twitter.com/zohosign'
 
   s.ios.deployment_target = '12.0'
@@ -30,7 +30,8 @@ Pod::Spec.new do |s|
   s.dependency 'Alamofire', '4.7.3'
   s.dependency 'SVProgressHUD'
   s.dependency 'SnapKit', '5.0'
-  
+  s.swift_versions = ['5.0']
+
   # s.resource_bundles = {
   #   'ZohoSignSDK' => ['ZohoSignSDK/Assets/*.png']
   # }
