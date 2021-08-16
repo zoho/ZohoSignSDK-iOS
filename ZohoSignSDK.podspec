@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
 
  # s.source_files = 'ZohoSignSDK/ZohoSignSDK.xcframework'
-  s.ios.vendored_frameworks = "ZohoSignSDK/ZohoSignSDK.framework"
+  s.ios.vendored_frameworks = "ZohoSignSDK/ZohoSignSDK.xcframework"
   # s.preserve_paths   = "ZohoSignSDK/ZohoSignSDK.xcframework"
   s.requires_arc = true
 
