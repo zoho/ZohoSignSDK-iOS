@@ -13,16 +13,17 @@ Pod::Spec.new do |s|
 
   s.homepage         = 'https://www.zoho.com/sign/'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.license          = { :type => 'Custom', :file => 'LICENSE' }
   s.author           = { 'ME Mobile' => 'memobile@zohocorp.com' }
   s.source           = { :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/zohosign'
 
   s.ios.deployment_target = '12.0'
 
-#  s.source_files = 'ZohoSignSDK/Classes/**/*'
+ # s.source_files = 'ZohoSignSDK/ZohoSignSDK.xcframework'
   s.vendored_frameworks = "ZohoSignSDK/ZohoSignSDK.xcframework"
-  s.preserve_paths   = "ZohoSignSDK/ZohoSignSDK.xcframework"
+  # s.preserve_paths   = "ZohoSignSDK/ZohoSignSDK.xcframework"
+  s.requires_arc = true
 
   s.dependency 'AMPopTip'
   s.dependency 'SSZipArchive'

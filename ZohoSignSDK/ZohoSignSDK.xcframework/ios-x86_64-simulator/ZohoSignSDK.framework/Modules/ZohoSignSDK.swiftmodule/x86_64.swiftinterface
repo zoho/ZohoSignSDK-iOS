@@ -30,6 +30,87 @@ import Vision
 import VisionKit
 import WebKit
 @_exported import ZohoSignSDK
+extension PDFDocument {
+  @inlinable internal func pageIteratorIndexed(_ body: (Swift.Int, PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
+        for index in 0..<pageCount {
+           try body(index,page(at: index))
+        }
+    }
+  @inlinable internal func pageIterator(_ body: (PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
+        for index in 0..<pageCount {
+            try body(page(at: index))
+        }
+    }
+}
+extension UINavigationController {
+  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+}
+@objc @_inheritsConvenienceInitializers public class ZSError : ObjectiveC.NSObject, Swift.Error {
+  public var localizedDescription: Swift.String
+  public var errorType: ZohoSignSDK.ZSErrorType
+  public var errorCode: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum ZSErrorType : Swift.Int {
+  case generalError
+  case noDataError
+  case timeOut
+  case cancel
+  case IAMExpiryError
+  case NoUserLoggedInError
+  case dataParsingError
+  case noNetworkError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(MyRequest) public class MyRequest : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension Optional {
+  @discardableResult
+  @inlinable internal func unwrap(_ completion: (Wrapped) throws -> Swift.Void) rethrows -> Swift.Bool {
+        if let unwrapped = self {
+            try? completion(unwrapped)
+            return true
+        }
+        return false
+    }
+  @inlinable internal func unwrap<T>(_ completion: (T) throws -> Swift.Void) rethrows {
+        if let unwrapped = self as? T {
+            try? completion(unwrapped)
+        }
+    }
+}
+extension Array {
+  @inlinable internal func mapIndexed<T>(_ transform: (Swift.Array<Element>.Index, Element) throws -> T) rethrows -> [T] {
+        var index = 0
+        var result: [T] = []
+        for element in self {
+            try? result.append(transform(index, element))
+            index += 1
+        }
+        return result
+    }
+  @inlinable internal func forEachIndexed(_ body: (Swift.Array<Element>.Index, Element) throws -> Swift.Void) rethrows {
+        var index: Int = 0
+        for element in self {
+            try? body(index, element)
+            index += 1
+        }
+    }
+  @inlinable internal mutating func forEachMutating(_ body: (Swift.Array<Element>.Index, Element) throws -> Element) rethrows {
+        var index: Int = 0
+        for element in self {
+            try? self[index] = body(index, element)
+            index += 1
+        }
+    }
+}
 extension MyRequest {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<ZohoSignSDK.MyRequest>
   @objc @NSManaged dynamic public var actionId: Swift.String? {
@@ -209,13 +290,13 @@ extension MyRequest {
   @objc(addAttachments:) @NSManaged dynamic public func addToAttachments(_ values: Foundation.NSSet)
   @objc(removeAttachments:) @NSManaged dynamic public func removeFromAttachments(_ values: Foundation.NSSet)
 }
-extension UINavigationController {
-  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+infix operator ~> : DefaultPrecedence
+public protocol ZohoSignClientDelegate : AnyObject {
+  func zohosignClientDidFinishSigning(signID: Swift.String)
+  func zohosignClientDidFailed(error: ZohoSignSDK.ZSError)
+  func zohosignClientDidSigningCancelledByUser()
 }
-public protocol ZSignClientDelegate : AnyObject {
-  func zsignClientDidCompletedSigning(signID: Swift.String)
-  func zsignClientDidFailed(error: ZohoSignSDK.ZSError)
-  func zsignClientDidSigningCancelledByUser()
+public protocol ZohoSignClientDataSource : AnyObject {
   func requestUserAgent() -> Swift.String
   func clientAppId() -> Swift.String
 }
@@ -225,7 +306,8 @@ public class ZohoSignClient {
     get
     set(value)
   }
-  weak public var delegate: ZohoSignSDK.ZSignClientDelegate? {
+  weak public var delegate: ZohoSignSDK.ZohoSignClientDelegate?
+  weak public var dataSource: ZohoSignSDK.ZohoSignClientDataSource? {
     get
     set(value)
   }
@@ -242,85 +324,6 @@ public class ZohoSignClient {
     set(value)
   }
   public func presentSigningViewController(signID: Swift.String, from rootViewcontroller: UIKit.UIViewController)
-  @objc deinit
-}
-extension Optional {
-  @discardableResult
-  @inlinable internal func unwrap(_ completion: (Wrapped) throws -> Swift.Void) rethrows -> Swift.Bool {
-        if let unwrapped = self {
-            try? completion(unwrapped)
-            return true
-        }
-        return false
-    }
-  @inlinable internal func unwrap<T>(_ completion: (T) throws -> Swift.Void) rethrows {
-        if let unwrapped = self as? T {
-            try? completion(unwrapped)
-        }
-    }
-}
-extension Array {
-  @inlinable internal func mapIndexed<T>(_ transform: (Swift.Array<Element>.Index, Element) throws -> T) rethrows -> [T] {
-        var index = 0
-        var result: [T] = []
-        for element in self {
-            try? result.append(transform(index, element))
-            index += 1
-        }
-        return result
-    }
-  @inlinable internal func forEachIndexed(_ body: (Swift.Array<Element>.Index, Element) throws -> Swift.Void) rethrows {
-        var index: Int = 0
-        for element in self {
-            try? body(index, element)
-            index += 1
-        }
-    }
-  @inlinable internal mutating func forEachMutating(_ body: (Swift.Array<Element>.Index, Element) throws -> Element) rethrows {
-        var index: Int = 0
-        for element in self {
-            try? self[index] = body(index, element)
-            index += 1
-        }
-    }
-}
-infix operator ~> : DefaultPrecedence
-@objc @_inheritsConvenienceInitializers public class ZSError : ObjectiveC.NSObject, Swift.Error {
-  public var localizedDescription: Swift.String
-  public var errorType: ZohoSignSDK.ZSErrorType
-  public var errorCode: Swift.Int
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public enum ZSErrorType : Swift.Int {
-  case generalError
-  case noDataError
-  case timeOut
-  case cancel
-  case IAMExpiryError
-  case NoUserLoggedInError
-  case dataParsingError
-  case noNetworkError
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-extension PDFDocument {
-  @inlinable internal func pageIteratorIndexed(_ body: (Swift.Int, PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
-        for index in 0..<pageCount {
-           try body(index,page(at: index))
-        }
-    }
-  @inlinable internal func pageIterator(_ body: (PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
-        for index in 0..<pageCount {
-            try body(page(at: index))
-        }
-    }
-}
-@_inheritsConvenienceInitializers @objc(MyRequest) public class MyRequest : CoreData.NSManagedObject {
-  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
   @objc deinit
 }
 @_inheritsConvenienceInitializers @objc(Attachment) public class Attachment : CoreData.NSManagedObject {

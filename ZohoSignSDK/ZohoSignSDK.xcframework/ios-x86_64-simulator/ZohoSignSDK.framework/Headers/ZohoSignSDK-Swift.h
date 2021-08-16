@@ -260,18 +260,18 @@ SWIFT_CLASS_NAMED("MyRequest")
 @class NSSet;
 
 @interface MyRequest (SWIFT_EXTENSION(ZohoSignSDK))
-- (void)addDocumentsObject:(Documents * _Nonnull)value;
-- (void)removeDocumentsObject:(Documents * _Nonnull)value;
-- (void)addDocuments:(NSSet * _Nonnull)values;
-- (void)removeDocuments:(NSSet * _Nonnull)values;
-@end
-
-
-@interface MyRequest (SWIFT_EXTENSION(ZohoSignSDK))
 - (void)addAttachmentsObject:(Attachment * _Nonnull)value;
 - (void)removeAttachmentsObject:(Attachment * _Nonnull)value;
 - (void)addAttachments:(NSSet * _Nonnull)values;
 - (void)removeAttachments:(NSSet * _Nonnull)values;
+@end
+
+
+@interface MyRequest (SWIFT_EXTENSION(ZohoSignSDK))
+- (void)addDocumentsObject:(Documents * _Nonnull)value;
+- (void)removeDocumentsObject:(Documents * _Nonnull)value;
+- (void)addDocuments:(NSSet * _Nonnull)values;
+- (void)removeDocuments:(NSSet * _Nonnull)values;
 @end
 
 @class NSData;
@@ -357,7 +357,6 @@ SWIFT_CLASS_NAMED("MyRequest")
 @interface UINavigationController (SWIFT_EXTENSION(ZohoSignSDK))
 - (void)traitCollectionDidChange:(UITraitCollection * _Nullable)previousTraitCollection;
 @end
-
 
 
 
