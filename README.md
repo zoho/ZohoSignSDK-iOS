@@ -9,7 +9,7 @@ ZohoSignSDK is a hollistic SDK which provides easy to use methods. Using these m
  - [x] Intuitive signing experience 
  - [x] Supports two-factor Validation for signing document
  - [x] Supports iPhone, iPad & Maccatalyst 
- - [x] Supports 17 Languages 
+ - [x] Supports 20 Languages 
  
 ## Requirements
 
@@ -64,6 +64,7 @@ class MyViewController: UIViewController {
 }
 ```
 
+
 ### Delegates
 ```ruby
 extension MyViewController : ZohoSignClientDelegate{
@@ -83,12 +84,14 @@ extension MyViewController : ZohoSignClientDelegate{
 
 ### DataSource
 ```ruby
-func requestUserAgent() -> String {
-        return #Useragent you want to set as header in request calls#>\
-}
+extension ViewController : ZohoSignClientDataSource{
+    func requestUserAgent() -> String {
+            return #Useragent you want to set as header in request calls#>\
+    }
 
-func clientAppId() -> String {
-        return "YOUR APP ID" ##just for our reference and track
+    func clientAppId() -> String {
+            return "YOUR APP ID" ##just for our reference and track
+    }
 }
 ```
 
@@ -132,3 +135,6 @@ List of keys:
 
 Nagarajan S, nagarajan.s@zohocorp.com
 
+## Give Feedback
+
+Please report bugs or issues to support@zohosign.com
