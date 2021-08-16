@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZohoSignSDK'
-  s.version          = '1.0.0-Beta'
+  s.version          = '1.0.1-Beta'
   s.summary          = 'iOS SDK for eSigning Zoho Sign documents.'
 
   s.homepage         = 'https://www.zoho.com/sign/'
