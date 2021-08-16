@@ -1,29 +1,134 @@
 # ZohoSignSDK
 
-[![CI Status](https://img.shields.io/travis/Nagarajan S/ZohoSignSDK.svg?style=flat)](https://travis-ci.org/Nagarajan S/ZohoSignSDK)
-[![Version](https://img.shields.io/cocoapods/v/ZohoSignSDK.svg?style=flat)](https://cocoapods.org/pods/ZohoSignSDK)
-[![License](https://img.shields.io/cocoapods/l/ZohoSignSDK.svg?style=flat)](https://cocoapods.org/pods/ZohoSignSDK)
-[![Platform](https://img.shields.io/cocoapods/p/ZohoSignSDK.svg?style=flat)](https://cocoapods.org/pods/ZohoSignSDK)
+ZohoSignSDK is a hollistic SDK which provides easy to use methods. Using these methods you can sign a ZohoSign document with your iOS Mobile Application.
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
+## Feature
+ - [x] Supports all ZohoSign document fields (Signature, Initial, Stamp, Name, Company, Job title, Sign Date, Custom Textfield, Dropdown, Radio button, Attachment, Checkbox)
+ - [x] Supports all signature creation methods like Draw, Type, Capture
+ - [x] Supports Dark mode
+ - [x] Intuitive signing experience 
+ - [x] Supports two-factor Validation for signing document
+ - [x] Supports iPhone, iPad & Maccatalyst 
+ - [x] Supports 17 Languages 
+ 
 ## Requirements
 
-## Installation
+* iOS 12.0+ 
+* Xcode 10.0+
+* Swift 5.0+
 
-ZohoSignSDK is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+## Installation
+Installation using Cocoapods
+
+You can integrate ZohoSignSDK in your application using [CocoaPods](https://cocoapods.org) using the ZohoSignSDK pod. Here is an example Podfile where ZohoSignSDK is included.
 
 ```ruby
-pod 'ZohoSignSDK'
+platform :ios, '12.0'
+
+target 'Project Target' do
+  use_frameworks!
+  pod 'ZohoSignSDK', '~> 1.0.2-Beta'
+end
 ```
+
+After ZohoSignSDK is added to your Podfile, run the ``` pod install``` command to complete the Installation.
+
+
+## Manually
+
+If you prefer not to use any of the aforementioned dependency managers, you can integrate Alamofire into your project manually.
+
+## Usage
+
+### Quick Start
+
+```ruby
+import ZohoSignSDK
+
+class MyViewController: UIViewController {
+
+    lazy var signClient : ZohoSignClient = {
+        let zsClient = ZohoSignClient()
+        zsClient.delegate = self
+        zsClient.dataSource = self
+        zsClient.skipDocumentDetailsPage = true
+        zsClient.skipTermsAndConditionPage = true
+        return zsClient
+    }()
+
+    func signDocument() {
+          signClient.presentSigningViewController(signID: #DOCUMENT_SIGN_ID_TO_BE_SIGNED#, 
+                     from: self)
+    }
+
+}
+```
+
+### Delegates
+```ruby
+extension MyViewController : ZohoSignClientDelegate{
+    func zohosignClientDidFinishSigning(signID: String) {
+        ##Success Handling
+    }
+    
+    func zohosignClientDidFailed(error: ZSError) {
+        ##Error handling
+    }
+    
+    func zohosignClientDidSigningCancelledByUser() {
+        ##User cancelled
+    }
+}
+```
+
+### DataSource
+```ruby
+func requestUserAgent() -> String {
+        return #Useragent you want to set as header in request calls#>\
+}
+
+func clientAppId() -> String {
+        return "YOUR APP ID" ##just for our reference and track
+}
+```
+
+## Localizations
+
+ZohoSignSDK has ready-to-use localizations for:
+
+* English ```en```
+* English-UK ```en-GB```
+* Dutch ```nl```
+* German ```de```
+* Italian ```it```
+* Filipino ```fil```
+* Spanish ```es```
+* Swedish ```sv```
+* French ```fr```
+* Norwegian Bokmal ```nb```
+* Polish ```pl```
+* Portuguese(Brazil) ```pt-BR```
+* Portuguese(Portugal) ```pt-PT```
+* Russian ```ru```
+* Chinese Simplified Han ```zh_Hans```
+* Chinese Traditional ```zh_Hant```
+* Turkish ```tr```
+* vietnamese ```vi```
+* korean ```ko```
+* Japanese ```ja```
+
+## Keys in Info.plist
+
+You need to add some keys to the Info.plist file with descriptions, per Apple's requirement(s). You can get a plist of keys for permissions as follows:
+
+List of keys:
+
+* NSCameraUsageDescription - This app needs access to camera to scan and capture signatures or documents. 
+* NSContactsUsageDescription - Allow access to your address book to add contacts directly to the app.
+* NSPhotoLibraryUsageDescription - This app needs access to camera roll to upload documents that you've already captured.
+
 
 ## Author
 
 Nagarajan S, nagarajan.s@zohocorp.com
 
-## License
-
-ZohoSignSDK is available under the MIT license. See the LICENSE file for more info.
