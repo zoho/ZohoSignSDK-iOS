@@ -1,0 +1,402 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-module-flags: -target arm64-apple-ios12.1 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ZohoSignSDK
+import AMPopTip
+import AVFoundation
+import AVKit
+import Alamofire
+import AudioUnit
+import Combine
+import Contacts
+import CoreData
+import CoreGraphics
+import CoreImage
+import Foundation
+import IntentsUI
+import LocalAuthentication
+import MobileCoreServices
+import Network
+import PDFKit
+import PencilKit
+import Photos
+import PhotosUI
+import SSZipArchive
+import SVProgressHUD
+import SafariServices
+import SnapKit
+import Swift
+import UIKit
+import Vision
+import VisionKit
+import WebKit
+@_exported import ZohoSignSDK
+extension PDFDocument {
+  @inlinable internal func pageIteratorIndexed(_ body: (Swift.Int, PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
+        for index in 0..<pageCount {
+           try body(index,page(at: index))
+        }
+    }
+  @inlinable internal func pageIterator(_ body: (PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
+        for index in 0..<pageCount {
+            try body(page(at: index))
+        }
+    }
+}
+extension UINavigationController {
+  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+}
+@objc @_inheritsConvenienceInitializers public class ZSError : ObjectiveC.NSObject, Swift.Error {
+  public var localizedDescription: Swift.String
+  public var errorType: ZohoSignSDK.ZSErrorType
+  public var errorCode: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum ZSErrorType : Swift.Int {
+  case generalError
+  case noDataError
+  case timeOut
+  case cancel
+  case IAMExpiryError
+  case NoUserLoggedInError
+  case dataParsingError
+  case noNetworkError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(MyRequest) public class MyRequest : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension Optional {
+  @discardableResult
+  @inlinable internal func unwrap(_ completion: (Wrapped) throws -> Swift.Void) rethrows -> Swift.Bool {
+        if let unwrapped = self {
+            try? completion(unwrapped)
+            return true
+        }
+        return false
+    }
+  @inlinable internal func unwrap<T>(_ completion: (T) throws -> Swift.Void) rethrows {
+        if let unwrapped = self as? T {
+            try? completion(unwrapped)
+        }
+    }
+}
+extension Array {
+  @inlinable internal func mapIndexed<T>(_ transform: (Swift.Array<Element>.Index, Element) throws -> T) rethrows -> [T] {
+        var index = 0
+        var result: [T] = []
+        for element in self {
+            try? result.append(transform(index, element))
+            index += 1
+        }
+        return result
+    }
+  @inlinable internal func forEachIndexed(_ body: (Swift.Array<Element>.Index, Element) throws -> Swift.Void) rethrows {
+        var index: Int = 0
+        for element in self {
+            try? body(index, element)
+            index += 1
+        }
+    }
+  @inlinable internal mutating func forEachMutating(_ body: (Swift.Array<Element>.Index, Element) throws -> Element) rethrows {
+        var index: Int = 0
+        for element in self {
+            try? self[index] = body(index, element)
+            index += 1
+        }
+    }
+}
+extension MyRequest {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<ZohoSignSDK.MyRequest>
+  @objc @NSManaged dynamic public var actionId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var actions: Foundation.Data? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var actionStatus: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var actionType: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var desc: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var expireByTime: Foundation.NSNumber? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var inpersonSigners: Foundation.Data? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isAutoFillViaSiriSelected: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isBlocked: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isDeletedRequest: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isExpiring: Foundation.NSNumber? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isExpired: Foundation.NSNumber? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isReviewCompleted: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isPhysicalSigningAllowed: Swift.Bool {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var isVerifyRecipient: Foundation.NSNumber? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var myRequestId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var myRequestStatus: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var name: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var notes: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var ownerName: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var privateNotes: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var offlineSigingStatus: Swift.Int16 {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var recipientEmail: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var recipientName: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var recipientPhoneNumber: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var requestedTime: Foundation.NSNumber? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var requesterEmail: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var requesterName: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var requestId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var requestStatus: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var signId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var statelessAuthCode: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var signerSettings: Foundation.Data? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var thumbnailPath: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var thumbnailStr: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var totalPages: Foundation.NSNumber? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var typeName: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var validity: Swift.Int64 {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var verificationType: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var documents: Swift.Set<ZohoSignSDK.Documents>? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var attachments: Swift.Set<ZohoSignSDK.Attachment>? {
+    @objc get
+    @objc set(value)
+  }
+}
+extension MyRequest {
+  @objc(addDocumentsObject:) @NSManaged dynamic public func addToDocuments(_ value: ZohoSignSDK.Documents)
+  @objc(removeDocumentsObject:) @NSManaged dynamic public func removeFromDocuments(_ value: ZohoSignSDK.Documents)
+  @objc(addDocuments:) @NSManaged dynamic public func addToDocuments(_ values: Foundation.NSSet)
+  @objc(removeDocuments:) @NSManaged dynamic public func removeFromDocuments(_ values: Foundation.NSSet)
+}
+extension MyRequest {
+  @objc(addAttachmentsObject:) @NSManaged dynamic public func addToAttachments(_ value: ZohoSignSDK.Attachment)
+  @objc(removeAttachmentsObject:) @NSManaged dynamic public func removeFromAttachments(_ value: ZohoSignSDK.Attachment)
+  @objc(addAttachments:) @NSManaged dynamic public func addToAttachments(_ values: Foundation.NSSet)
+  @objc(removeAttachments:) @NSManaged dynamic public func removeFromAttachments(_ values: Foundation.NSSet)
+}
+infix operator ~> : DefaultPrecedence
+public protocol ZohoSignClientDelegate : AnyObject {
+  func zohosignClientDidFinishSigning(signID: Swift.String)
+  func zohosignClientDidFailed(error: ZohoSignSDK.ZSError)
+  func zohosignClientDidSigningCancelledByUser()
+}
+public protocol ZohoSignClientDataSource : AnyObject {
+  func requestUserAgent() -> Swift.String
+  func clientAppId() -> Swift.String
+}
+public class ZohoSignClient {
+  public init()
+  public var isDynamicFontSupportNeeded: Swift.Bool {
+    get
+    set(value)
+  }
+  weak public var delegate: ZohoSignSDK.ZohoSignClientDelegate?
+  weak public var dataSource: ZohoSignSDK.ZohoSignClientDataSource? {
+    get
+    set(value)
+  }
+  public var skipTermsAndConditionPage: Swift.Bool {
+    get
+    set(value)
+  }
+  public var skipDocumentDetailsPage: Swift.Bool {
+    get
+    set(value)
+  }
+  public var showSigningSuccessMessage: Swift.Bool {
+    get
+    set(value)
+  }
+  public func presentSigningViewController(signID: Swift.String, from rootViewcontroller: UIKit.UIViewController)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(Attachment) public class Attachment : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension Attachment {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<ZohoSignSDK.Attachment>
+  @objc @NSManaged dynamic public var attachmentId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var attachmentName: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var attachmentSize: Swift.Int64 {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var fieldId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var totalPages: Swift.Int16 {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var myRequest: ZohoSignSDK.MyRequest? {
+    @objc get
+    @objc set(value)
+  }
+}
+@_inheritsConvenienceInitializers @objc(Documents) public class Documents : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+extension Documents {
+  @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<ZohoSignSDK.Documents>
+  @objc @NSManaged dynamic public var documentId: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var documentName: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var documnetOrder: Swift.Int16 {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var fileSize: Swift.Int64 {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var pageHeight: Swift.Float {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var pageWidth: Swift.Float {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var thumbnailStr: Swift.String? {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var totalPages: Swift.Int16 {
+    @objc get
+    @objc set(value)
+  }
+  @objc @NSManaged dynamic public var receivedRequest: ZohoSignSDK.MyRequest? {
+    @objc get
+    @objc set(value)
+  }
+}
