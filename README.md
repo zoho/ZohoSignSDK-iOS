@@ -8,7 +8,7 @@ ZohoSignSDK is a hollistic SDK which provides easy to use methods. Using these m
  - [x] Supports Dark mode
  - [x] Intuitive signing experience 
  - [x] Supports two-factor Validation for signing document
- - [x] Supports iPhone, iPad & Maccatalyst 
+ - [x] Supports iPhone, iPad & macCatalyst 
  - [x] Supports 20 Languages 
  
 ## Requirements
@@ -36,7 +36,7 @@ After ZohoSignSDK is added to your Podfile, run the ``` pod install``` command t
 
 ## Manually
 
-If you prefer not to use any of the aforementioned dependency managers, you can integrate Alamofire into your project manually.
+If you prefer not to use any of the aforementioned dependency managers, you can integrate ZohoSignSDK into your project manually.
 
 ## Usage
 
