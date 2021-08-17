@@ -5,7 +5,8 @@ ZohoSignSDK provides easy to use of methods to sign a document with your iOS Mob
 ## Feature
  - [x] Supports all ZohoSign document fields (Signature, Initial, Stamp, Name, Company, Job title, Sign Date, Custom Textfield, Dropdown, Radio button, Attachment, Checkbox)
  - [x] Supports all signature creation methods like Draw, Type, Capture
- - [x] Supports Dark mode
+ - [x] Supports Light/Dark mode
+ - [x] built-in document scanner for uploading attachments
  - [x] Intuitive signing experience 
  - [x] Supports two-factor Validation for signing document
  - [x] Supports iPhone, iPad & macCatalyst 
