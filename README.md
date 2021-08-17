@@ -1,6 +1,6 @@
 # ZohoSignSDK
 
-ZohoSignSDK is a hollistic SDK which provides easy to use methods. Using these methods you can sign a ZohoSign document with your iOS Mobile Application.
+ZohoSignSDK provides easy to use of methods to sign a document with your iOS Mobile Application.
 
 ## Feature
  - [x] Supports all ZohoSign document fields (Signature, Initial, Stamp, Name, Company, Job title, Sign Date, Custom Textfield, Dropdown, Radio button, Attachment, Checkbox)
