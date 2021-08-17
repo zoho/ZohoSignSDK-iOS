@@ -28,7 +28,7 @@ platform :ios, '12.0'
 
 target 'Project Target' do
   use_frameworks!
-  pod 'ZohoSignSDK', '~> 1.0.2-Beta'
+  pod 'ZohoSignSDK', '~> 1.0.1-Beta'
 end
 ```
 
