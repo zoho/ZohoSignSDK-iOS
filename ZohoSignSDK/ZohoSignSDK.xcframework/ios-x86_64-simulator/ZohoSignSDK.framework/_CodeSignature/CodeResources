@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		LdEiDpNZW3qIpWFZGBxUrgst2OQ=
+		CMg00ORTDxqaRNbZ8vQITcMyB70=
 		</data>
 		<key>Headers/ZohoSignSDK-Swift.h</key>
 		<data>
@@ -22,11 +22,11 @@
 		</data>
 		<key>Modules/ZohoSignSDK.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		PpiNtVSvZ3eO2IObJZKL47wG4GI=
+		Z7EDY3RenOoOXERhr9zBwH9wGYo=
 		</data>
 		<key>Modules/ZohoSignSDK.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<data>
-		PpiNtVSvZ3eO2IObJZKL47wG4GI=
+		Z7EDY3RenOoOXERhr9zBwH9wGYo=
 		</data>
 		<key>Modules/ZohoSignSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Modules/ZohoSignSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		mlzuoDQf55z5+bTDz30QiYAI3rg=
+		eMnUKaLJrDVek0ZCLCyBJtmN0bI=
 		</data>
 		<key>Modules/ZohoSignSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>Modules/ZohoSignSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		mlzuoDQf55z5+bTDz30QiYAI3rg=
+		eMnUKaLJrDVek0ZCLCyBJtmN0bI=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -251,7 +251,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AP+ZEGxO7qBid5Gq6mt9vPzcqgQPBErlng8YHu5jlTQ=
+			We+YYwGnnmrAhITupi2rz2DQcIWP3pa//7A8N16xsqI=
 			</data>
 		</dict>
 		<key>Headers/ZohoSignSDK-Swift.h</key>
@@ -272,14 +272,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			DosInkRj88XuBim4oxlnuEgOlA4WnExyozapleM2HhU=
+			kDMKJMkSwiKszOXWKQi9nNyh0L7NB2phwJSVZdOHcvg=
 			</data>
 		</dict>
 		<key>Modules/ZohoSignSDK.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			DosInkRj88XuBim4oxlnuEgOlA4WnExyozapleM2HhU=
+			kDMKJMkSwiKszOXWKQi9nNyh0L7NB2phwJSVZdOHcvg=
 			</data>
 		</dict>
 		<key>Modules/ZohoSignSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -300,7 +300,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TluxFTznvDY8t4wTYqREnkpmd5pB9VybzE9v+7xzXms=
+			ag0EsN7ULRF02XyaIdKCPL6bZpb5XEchnxf9dsTVcik=
 			</data>
 		</dict>
 		<key>Modules/ZohoSignSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -321,7 +321,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			TluxFTznvDY8t4wTYqREnkpmd5pB9VybzE9v+7xzXms=
+			ag0EsN7ULRF02XyaIdKCPL6bZpb5XEchnxf9dsTVcik=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
