@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'AMPopTip'
   s.dependency 'SSZipArchive'
-  s.dependency 'Alamofire', '4.7.3'
+  s.dependency 'Alamofire'
   s.dependency 'SVProgressHUD'
   s.dependency 'SnapKit', '5.0'
   s.swift_versions = ['5.0']
