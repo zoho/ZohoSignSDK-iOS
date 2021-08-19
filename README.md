@@ -8,6 +8,7 @@ ZohoSignSDK provides easy to use of methods to sign a document with your iOS Mob
  - [x] Supports Light/Dark mode
  - [x] built-in document scanner for uploading attachments
  - [x] Intuitive signing experience 
+ - [x] Supports print and upload signed document 
  - [x] Supports two-factor Validation for signing document
  - [x] Supports iPhone, iPad & macCatalyst 
  - [x] Supports 20 Languages 
@@ -24,11 +25,11 @@ Installation using Cocoapods
 You can integrate ZohoSignSDK in your application using [CocoaPods](https://cocoapods.org) using the ZohoSignSDK pod. Here is an example Podfile where ZohoSignSDK is included.
 
 ```ruby
-platform :ios, '12.0'
+platform :ios, '11.0'
 
 target 'Project Target' do
   use_frameworks!
-  pod 'ZohoSignSDK', '~> 1.0.2-Beta'
+  pod 'ZohoSignSDK', '~> 1.0.3-Beta'
 end
 ```
 
