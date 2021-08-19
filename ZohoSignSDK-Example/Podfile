@@ -6,5 +6,7 @@ target 'ZohoSignSDK-Example' do
   use_frameworks!
 
   # Pods for ZohoSignSDK-Example
-  pod 'ZohoSignSDK', '~> 1.0.2-Beta'
+  pod 'ZohoSignSDK', '~> 1.0.3-Beta'
+#pod 'ZohoSignSDK', :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git'
+
 end

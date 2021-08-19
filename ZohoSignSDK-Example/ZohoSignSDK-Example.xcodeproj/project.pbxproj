@@ -104,7 +104,7 @@
 				54651A3726CA487000E2FF55 /* Sources */,
 				54651A3826CA487000E2FF55 /* Frameworks */,
 				54651A3926CA487000E2FF55 /* Resources */,
-				41AF099AF598743082A364E4 /* [CP] Embed Pods Frameworks */,
+				A8847A58308729FE01DF9C87 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,7 +161,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		41AF099AF598743082A364E4 /* [CP] Embed Pods Frameworks */ = {
+		A8847A58308729FE01DF9C87 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -357,8 +357,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ824L8Y37;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3U32PYBF7X;
 				INFOPLIST_FILE = "ZohoSignSDK-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -367,6 +368,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zoho.ZohoSignSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Global Wildcard ME Development Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -378,8 +380,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TZ824L8Y37;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3U32PYBF7X;
 				INFOPLIST_FILE = "ZohoSignSDK-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -388,6 +391,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zoho.ZohoSignSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Global Wildcard ME Development Profile";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

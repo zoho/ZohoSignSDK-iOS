@@ -15,7 +15,6 @@ import Foundation
 import IntentsUI
 import LocalAuthentication
 import MobileCoreServices
-import Network
 import PDFKit
 import PencilKit
 import Photos
@@ -42,50 +41,6 @@ extension PDFDocument {
         }
     }
 }
-extension UINavigationController {
-  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
-}
-@objc @_inheritsConvenienceInitializers public class ZSError : ObjectiveC.NSObject, Swift.Error {
-  public var localizedDescription: Swift.String
-  public var errorType: ZohoSignSDK.ZSErrorType
-  public var errorCode: Swift.Int
-  @objc override dynamic public init()
-  @objc deinit
-}
-@objc public enum ZSErrorType : Swift.Int {
-  case generalError
-  case noDataError
-  case timeOut
-  case cancel
-  case IAMExpiryError
-  case NoUserLoggedInError
-  case dataParsingError
-  case noNetworkError
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
-@_inheritsConvenienceInitializers @objc(MyRequest) public class MyRequest : CoreData.NSManagedObject {
-  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
-  @objc deinit
-}
-extension Optional {
-  @discardableResult
-  @inlinable internal func unwrap(_ completion: (Wrapped) throws -> Swift.Void) rethrows -> Swift.Bool {
-        if let unwrapped = self {
-            try? completion(unwrapped)
-            return true
-        }
-        return false
-    }
-  @inlinable internal func unwrap<T>(_ completion: (T) throws -> Swift.Void) rethrows {
-        if let unwrapped = self as? T {
-            try? completion(unwrapped)
-        }
-    }
-}
 extension Array {
   @inlinable internal func mapIndexed<T>(_ transform: (Swift.Array<Element>.Index, Element) throws -> T) rethrows -> [T] {
         var index = 0
@@ -108,6 +63,22 @@ extension Array {
         for element in self {
             try? self[index] = body(index, element)
             index += 1
+        }
+    }
+}
+infix operator ~> : DefaultPrecedence
+extension Optional {
+  @discardableResult
+  @inlinable internal func unwrap(_ completion: (Wrapped) throws -> Swift.Void) rethrows -> Swift.Bool {
+        if let unwrapped = self {
+            try? completion(unwrapped)
+            return true
+        }
+        return false
+    }
+  @inlinable internal func unwrap<T>(_ completion: (T) throws -> Swift.Void) rethrows {
+        if let unwrapped = self as? T {
+            try? completion(unwrapped)
         }
     }
 }
@@ -290,7 +261,13 @@ extension MyRequest {
   @objc(addAttachments:) @NSManaged dynamic public func addToAttachments(_ values: Foundation.NSSet)
   @objc(removeAttachments:) @NSManaged dynamic public func removeFromAttachments(_ values: Foundation.NSSet)
 }
-infix operator ~> : DefaultPrecedence
+extension UINavigationController {
+  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+}
+@_inheritsConvenienceInitializers @objc(MyRequest) public class MyRequest : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
 public protocol ZohoSignClientDelegate : AnyObject {
   func zohosignClientDidFinishSigning(signID: Swift.String)
   func zohosignClientDidFailed(error: ZohoSignSDK.ZSError)
@@ -325,6 +302,28 @@ public class ZohoSignClient {
   }
   public func presentSigningViewController(signID: Swift.String, from rootViewcontroller: UIKit.UIViewController)
   @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ZSError : ObjectiveC.NSObject, Swift.Error {
+  public var localizedDescription: Swift.String
+  public var errorType: ZohoSignSDK.ZSErrorType
+  public var errorCode: Swift.Int
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum ZSErrorType : Swift.Int {
+  case generalError
+  case noDataError
+  case timeOut
+  case cancel
+  case IAMExpiryError
+  case NoUserLoggedInError
+  case dataParsingError
+  case noNetworkError
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @_inheritsConvenienceInitializers @objc(Attachment) public class Attachment : CoreData.NSManagedObject {
   @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)

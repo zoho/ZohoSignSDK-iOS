@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signIDTextView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
-        signIDTextView.text = "234b4d535f4956238bd6f78e14cc41e8bb0a94f6fcdb67693ed14e1bedcce6cfc07b8016a328b5f668f117a06392244b2beddb80d9690814cf59896749144d9428cc3995e0cb48395257a9f805bfdab20447fd0144359b50"
+        signIDTextView.text = "234b4d535f4956236efadf2854eac6d8ad090975b3ae83aa561040ba38cef7db41a6509b5650ad6deea0dd0ee456e80019648d527fdbb70773b27dd10d37b38e2da66a163904719ecb1f0a17c654b02f98cbe4d516b91252"
                 
     }
 
