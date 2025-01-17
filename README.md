@@ -133,10 +133,6 @@ List of keys:
 * NSPhotoLibraryUsageDescription - This app needs access to camera roll to upload documents that you've already captured.
 
 
-## Author
-
-Nagarajan S, nagarajan.s@zohocorp.com
-
 ## Give Feedback
 
 Please report bugs or issues to support@zohosign.com
