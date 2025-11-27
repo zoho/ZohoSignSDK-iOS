@@ -1,11 +1,11 @@
 framework module ZohoSignSDK {
   umbrella header "ZohoSignSDK.h"
-
   export *
+
   module * { export * }
 }
 
 module ZohoSignSDK.Swift {
-    header "ZohoSignSDK-Swift.h"
-    requires objc
+  header "ZohoSignSDK-Swift.h"
+  requires objc
 }

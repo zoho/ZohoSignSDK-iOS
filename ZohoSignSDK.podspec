@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZohoSignSDK'
-  s.version          = '1.0.3-Beta'
+  s.version          = '1.0.4-Beta'
   s.summary          = 'iOS SDK for eSigning Zoho Sign documents.'
 
   s.homepage         = 'https://www.zoho.com/sign/'
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git', :tag => s.version }
   s.social_media_url = 'https://twitter.com/zohosign'
 
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '14.0'
 
  # s.source_files = 'ZohoSignSDK/ZohoSignSDK.xcframework'
   s.ios.vendored_frameworks = "ZohoSignSDK/ZohoSignSDK.xcframework"
@@ -32,10 +32,10 @@ Pod::Spec.new do |s|
   s.dependency 'SnapKit', '5.0'
   s.swift_versions = ['5.0']
 
-  s.pod_target_xcconfig = {
-    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-  }
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  # s.pod_target_xcconfig = {
+  #   'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
+  # }
+  # s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 
   # s.resource_bundles = {
   #   'ZohoSignSDK' => ['ZohoSignSDK/Assets/*.png']

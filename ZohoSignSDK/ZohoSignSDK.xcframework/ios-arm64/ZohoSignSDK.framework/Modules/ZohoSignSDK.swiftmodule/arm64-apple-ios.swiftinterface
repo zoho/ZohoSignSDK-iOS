@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
-// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name ZohoSignSDK
+// swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
+// swift-module-flags: -target arm64-apple-ios15 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name ZohoSignSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
 import AMPopTip
 import AVFoundation
 import AVKit
@@ -11,6 +12,7 @@ import Contacts
 import CoreData
 import CoreGraphics
 import CoreImage
+import DeveloperToolsSupport
 import Foundation
 import IntentsUI
 import LocalAuthentication
@@ -24,24 +26,32 @@ import SVProgressHUD
 import SafariServices
 import SnapKit
 import Swift
+import SwiftUI
 import UIKit
 import Vision
 import VisionKit
 import WebKit
 @_exported import ZohoSignSDK
-extension PDFDocument {
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+extension PDFKit.PDFDocument {
+  #if compiler(>=5.3) && $NonescapableTypes
   @inlinable internal func pageIteratorIndexed(_ body: (Swift.Int, PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
         for index in 0..<pageCount {
            try body(index,page(at: index))
         }
     }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @inlinable internal func pageIterator(_ body: (PDFKit.PDFPage?) throws -> Swift.Void) rethrows {
         for index in 0..<pageCount {
             try body(page(at: index))
         }
     }
+  #endif
 }
-extension Array {
+extension Swift.Array {
   @inlinable internal func mapIndexed<T>(_ transform: (Swift.Array<Element>.Index, Element) throws -> T) rethrows -> [T] {
         var index = 0
         var result: [T] = []
@@ -67,7 +77,8 @@ extension Array {
     }
 }
 infix operator ~> : DefaultPrecedence
-extension Optional {
+#if compiler(>=5.3) && $NonescapableTypes
+extension Swift.Optional {
   @discardableResult
   @inlinable internal func unwrap(_ completion: (Wrapped) throws -> Swift.Void) rethrows -> Swift.Bool {
         if let unwrapped = self {
@@ -82,190 +93,263 @@ extension Optional {
         }
     }
 }
-extension MyRequest {
+#endif
+extension ZohoSignSDK.MyRequest {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<ZohoSignSDK.MyRequest>
-  @objc @NSManaged dynamic public var actionId: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var actionId: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var actions: Foundation.Data? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var actions: Foundation.Data? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var actionStatus: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var actionStatus: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var actionType: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var actionType: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var desc: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var desc: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var expireByTime: Foundation.NSNumber? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var expireByTime: Foundation.NSNumber? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var inpersonSigners: Foundation.Data? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var inpersonSigners: Foundation.Data? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isAutoFillViaSiriSelected: Swift.Bool {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var isAutoFillViaSiriSelected: Swift.Bool {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isBlocked: Swift.Bool {
+  @objc @NSManaged nonisolated dynamic public var isBlocked: Swift.Bool {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isDeletedRequest: Swift.Bool {
+  @objc @NSManaged nonisolated dynamic public var isDeletedRequest: Swift.Bool {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isExpiring: Foundation.NSNumber? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var isExpiring: Foundation.NSNumber? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isExpired: Foundation.NSNumber? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var isExpired: Foundation.NSNumber? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isReviewCompleted: Swift.Bool {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var isReviewCompleted: Swift.Bool {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isPhysicalSigningAllowed: Swift.Bool {
+  @objc @NSManaged nonisolated dynamic public var isPhysicalSigningAllowed: Swift.Bool {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var isVerifyRecipient: Foundation.NSNumber? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var isVerifyRecipient: Foundation.NSNumber? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var myRequestId: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var myRequestId: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var myRequestStatus: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var myRequestStatus: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var name: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var name: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var notes: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var notes: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var ownerName: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var ownerName: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var privateNotes: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var privateNotes: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var offlineSigingStatus: Swift.Int16 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var offlineSigingStatus: Swift.Int16 {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var recipientEmail: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var recipientEmail: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var recipientName: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var recipientName: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var recipientPhoneNumber: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var recipientPhoneNumber: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var requestedTime: Foundation.NSNumber? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var requestedTime: Foundation.NSNumber? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var requesterEmail: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var requesterEmail: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var requesterName: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var requesterName: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var requestId: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var requestId: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var requestStatus: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var requestStatus: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var signId: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var signId: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var statelessAuthCode: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var statelessAuthCode: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var signerSettings: Foundation.Data? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var signerSettings: Foundation.Data? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var thumbnailPath: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var thumbnailPath: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var thumbnailStr: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var thumbnailStr: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var totalPages: Foundation.NSNumber? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var totalPages: Foundation.NSNumber? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var typeName: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var typeName: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var validity: Swift.Int64 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var validity: Swift.Int64 {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var verificationType: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var verificationType: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var documents: Swift.Set<ZohoSignSDK.Documents>? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var documents: Swift.Set<ZohoSignSDK.Documents>? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var attachments: Swift.Set<ZohoSignSDK.Attachment>? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var attachments: Swift.Set<ZohoSignSDK.Attachment>? {
     @objc get
-    @objc set(value)
+    @objc set
   }
+  #endif
 }
-extension MyRequest {
-  @objc(addDocumentsObject:) @NSManaged dynamic public func addToDocuments(_ value: ZohoSignSDK.Documents)
-  @objc(removeDocumentsObject:) @NSManaged dynamic public func removeFromDocuments(_ value: ZohoSignSDK.Documents)
-  @objc(addDocuments:) @NSManaged dynamic public func addToDocuments(_ values: Foundation.NSSet)
-  @objc(removeDocuments:) @NSManaged dynamic public func removeFromDocuments(_ values: Foundation.NSSet)
+extension ZohoSignSDK.MyRequest {
+  @objc(addDocumentsObject:) @NSManaged nonisolated dynamic public func addToDocuments(_ value: ZohoSignSDK.Documents)
+  @objc(removeDocumentsObject:) @NSManaged nonisolated dynamic public func removeFromDocuments(_ value: ZohoSignSDK.Documents)
+  @objc(addDocuments:) @NSManaged nonisolated dynamic public func addToDocuments(_ values: Foundation.NSSet)
+  @objc(removeDocuments:) @NSManaged nonisolated dynamic public func removeFromDocuments(_ values: Foundation.NSSet)
 }
-extension MyRequest {
-  @objc(addAttachmentsObject:) @NSManaged dynamic public func addToAttachments(_ value: ZohoSignSDK.Attachment)
-  @objc(removeAttachmentsObject:) @NSManaged dynamic public func removeFromAttachments(_ value: ZohoSignSDK.Attachment)
-  @objc(addAttachments:) @NSManaged dynamic public func addToAttachments(_ values: Foundation.NSSet)
-  @objc(removeAttachments:) @NSManaged dynamic public func removeFromAttachments(_ values: Foundation.NSSet)
+extension ZohoSignSDK.MyRequest {
+  @objc(addAttachmentsObject:) @NSManaged nonisolated dynamic public func addToAttachments(_ value: ZohoSignSDK.Attachment)
+  @objc(removeAttachmentsObject:) @NSManaged nonisolated dynamic public func removeFromAttachments(_ value: ZohoSignSDK.Attachment)
+  @objc(addAttachments:) @NSManaged nonisolated dynamic public func addToAttachments(_ values: Foundation.NSSet)
+  @objc(removeAttachments:) @NSManaged nonisolated dynamic public func removeFromAttachments(_ values: Foundation.NSSet)
 }
-extension UINavigationController {
-  @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+extension UIKit.UINavigationController {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  #endif
 }
-@_inheritsConvenienceInitializers @objc(MyRequest) public class MyRequest : CoreData.NSManagedObject {
-  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+@_inheritsConvenienceInitializers @objc(MyRequest) nonisolated public class MyRequest : CoreData.NSManagedObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc override nonisolated dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  #endif
   @objc deinit
 }
 public protocol ZohoSignClientDelegate : AnyObject {
@@ -281,24 +365,24 @@ public class ZohoSignClient {
   public init()
   public var isDynamicFontSupportNeeded: Swift.Bool {
     get
-    set(value)
+    set
   }
-  weak public var delegate: ZohoSignSDK.ZohoSignClientDelegate?
-  weak public var dataSource: ZohoSignSDK.ZohoSignClientDataSource? {
+  weak public var delegate: (any ZohoSignSDK.ZohoSignClientDelegate)?
+  weak public var dataSource: (any ZohoSignSDK.ZohoSignClientDataSource)? {
     get
-    set(value)
+    set
   }
   public var skipTermsAndConditionPage: Swift.Bool {
     get
-    set(value)
+    set
   }
   public var skipDocumentDetailsPage: Swift.Bool {
     get
-    set(value)
+    set
   }
   public var showSigningSuccessMessage: Swift.Bool {
     get
-    set(value)
+    set
   }
   public func presentSigningViewController(signID: Swift.String, from rootViewcontroller: UIKit.UIViewController)
   @objc deinit
@@ -319,83 +403,120 @@ public class ZohoSignClient {
   case NoUserLoggedInError
   case dataParsingError
   case noNetworkError
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
   }
 }
-@_inheritsConvenienceInitializers @objc(Attachment) public class Attachment : CoreData.NSManagedObject {
-  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+public typealias AttachmentCoreDataClassSet = Foundation.NSSet
+@_inheritsConvenienceInitializers @objc(Attachment) nonisolated public class Attachment : CoreData.NSManagedObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc override nonisolated dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  #endif
   @objc deinit
 }
-extension Attachment {
+public typealias AttachmentCoreDataPropertiesSet = Foundation.NSSet
+extension ZohoSignSDK.Attachment {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<ZohoSignSDK.Attachment>
-  @objc @NSManaged dynamic public var attachmentId: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var attachmentId: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var attachmentName: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var attachmentName: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var attachmentSize: Swift.Int64 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var attachmentSize: Swift.Int64 {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var fieldId: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var fieldId: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var totalPages: Swift.Int16 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var totalPages: Swift.Int16 {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var myRequest: ZohoSignSDK.MyRequest? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var myRequest: ZohoSignSDK.MyRequest? {
     @objc get
-    @objc set(value)
+    @objc set
   }
+  #endif
 }
-@_inheritsConvenienceInitializers @objc(Documents) public class Documents : CoreData.NSManagedObject {
-  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+extension ZohoSignSDK.Attachment : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
+}
+public typealias DocumentsCoreDataClassSet = Foundation.NSSet
+@_inheritsConvenienceInitializers @objc(Documents) nonisolated public class Documents : CoreData.NSManagedObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc override nonisolated dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  #endif
   @objc deinit
 }
-extension Documents {
+public typealias DocumentsCoreDataPropertiesSet = Foundation.NSSet
+extension ZohoSignSDK.Documents {
   @nonobjc public class func fetchRequest() -> CoreData.NSFetchRequest<ZohoSignSDK.Documents>
-  @objc @NSManaged dynamic public var documentId: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var documentId: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var documentName: Swift.String? {
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var documentName: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var documnetOrder: Swift.Int16 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var documnetOrder: Swift.Int16 {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var fileSize: Swift.Int64 {
+  @objc @NSManaged nonisolated dynamic public var fileSize: Swift.Int64 {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var pageHeight: Swift.Float {
+  @objc @NSManaged nonisolated dynamic public var pageHeight: Swift.Float {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var pageWidth: Swift.Float {
+  @objc @NSManaged nonisolated dynamic public var pageWidth: Swift.Float {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var thumbnailStr: Swift.String? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var thumbnailStr: Swift.String? {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var totalPages: Swift.Int16 {
+  #endif
+  @objc @NSManaged nonisolated dynamic public var totalPages: Swift.Int16 {
     @objc get
-    @objc set(value)
+    @objc set
   }
-  @objc @NSManaged dynamic public var receivedRequest: ZohoSignSDK.MyRequest? {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc @NSManaged nonisolated dynamic public var receivedRequest: ZohoSignSDK.MyRequest? {
     @objc get
-    @objc set(value)
+    @objc set
   }
+  #endif
 }
+extension ZohoSignSDK.Documents : Swift.Identifiable {
+  public typealias ID = Swift.ObjectIdentifier
+}
+public typealias ZohoSignDataModelFoundationFrameworkSet = Foundation.NSSet
+public typealias ZohoSignDataModelCoreDataFrameworkManagedObject = CoreData.NSManagedObject
+extension ZohoSignSDK.ZSErrorType : Swift.Equatable {}
+extension ZohoSignSDK.ZSErrorType : Swift.Hashable {}
+extension ZohoSignSDK.ZSErrorType : Swift.RawRepresentable {}
