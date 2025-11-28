@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZohoSignSDK'
-  s.version          = '1.0.4-Beta'
+  s.version          = '1.0.3-Beta'
   s.summary          = 'iOS SDK for eSigning Zoho Sign documents.'
 
   s.homepage         = 'https://www.zoho.com/sign/'
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git', :tag => s.version }
   s.social_media_url = 'https://twitter.com/zohosign'
 
-  s.ios.deployment_target = '14.0'
+  s.ios.deployment_target = '15.0'
 
  # s.source_files = 'ZohoSignSDK/ZohoSignSDK.xcframework'
   s.ios.vendored_frameworks = "ZohoSignSDK/ZohoSignSDK.xcframework"
