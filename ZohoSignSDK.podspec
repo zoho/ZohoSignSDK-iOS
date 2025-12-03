@@ -8,11 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZohoSignSDK'
-  s.version          = '1.0.3-Beta'
+  s.version          = '1.0'
   s.summary          = 'iOS SDK for eSigning Zoho Sign documents.'
 
   s.homepage         = 'https://www.zoho.com/sign/'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Custom', :file => 'LICENSE' }
   s.author           = { 'ME Mobile' => 'memobile@zohocorp.com' }
   s.source           = { :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git', :tag => s.version }
@@ -29,8 +28,19 @@ Pod::Spec.new do |s|
   s.dependency 'SSZipArchive'
   s.dependency 'Alamofire'
   s.dependency 'SVProgressHUD'
-  s.dependency 'SnapKit', '5.0'
+  s.dependency 'SnapKit'
   s.swift_versions = ['5.0']
+
+  s.pod_target_xcconfig = {
+    'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES',
+    'LD_RUNPATH_SEARCH_PATHS' => '$(inherited) @executable_path/Frameworks @loader_path/Frameworks',
+    'OTHER_LDFLAGS' => '$(inherited) -ObjC'
+  }
+
+  s.user_target_xcconfig = {
+    'LD_RUNPATH_SEARCH_PATHS' => '$(inherited) @executable_path/Frameworks @loader_path/Frameworks',
+    'OTHER_LDFLAGS' => '$(inherited) -ObjC'
+  }
 
   # s.pod_target_xcconfig = {
   #   'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'

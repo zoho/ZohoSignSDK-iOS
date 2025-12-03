@@ -12,15 +12,15 @@ import ZohoSignSDK
 
 class ViewController: UIViewController {
 
-    lazy var signClient : ZohoSignClient = {
-        let zsClient = ZohoSignClient()
-        zsClient.delegate = self
-        zsClient.dataSource = self
-        zsClient.skipDocumentDetailsPage = true
-        zsClient.skipTermsAndConditionPage = true
-        return zsClient
-    }()
-    
+//    lazy var signClient : ZohoSignClient = {
+//        let zsClient = ZohoSignClient()
+//        zsClient.delegate = self
+//        zsClient.dataSource = self
+//        zsClient.skipDocumentDetailsPage = true
+//        zsClient.skipTermsAndConditionPage = true
+//        return zsClient
+//    }()
+//    
     @IBOutlet weak var signIDTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,47 +31,47 @@ class ViewController: UIViewController {
 
 
     @IBAction func signDocument(_ sender: Any) {
-        signClient.presentSigningViewController(signID: signIDTextView.text ?? "", from: self)
+//        signClient.presentSigningViewController(signID: signIDTextView.text ?? "", from: self)
     }
 }
 
 
 
-extension ViewController : ZohoSignClientDelegate{
-    func zohosignClientDidFinishSigning(signID: String) {
-        //Success Handling
-    }
-    
-    func zohosignClientDidFailed(error: ZSError) {
-        //Error handling
-    }
-    
-    func zohosignClientDidSigningCancelledByUser() {
-        //User cancelled
-    }
-}
-
-
-extension ViewController : ZohoSignClientDataSource{
-    func requestUserAgent() -> String {
-        /*var systemVersion = UIDevice.current.systemVersion
-        var systemModel = UIDevice.current.model
-        if DeviceType.isMac {
-            systemVersion = ProcessInfo.processInfo.operatingSystemVersionString
-            systemModel   = "Mac OS X"
-        }
-        
-        let userAgent_string = String(format: "Zoho Sign/%@(%@)/%@(%@)", Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String,
-                                      Bundle.main.infoDictionary?["CFBundleVersion"] as! String,
-                                      systemModel, systemVersion)
-         return userAgent_string
-         */
-        return "ZohoSignSDK Example (1.0)"
-    }
-    
-    func clientAppId() -> String {
-        return "com.example.test" //just for our reference and track
-    }
-    
-}
-
+//extension ViewController : ZohoSignClientDelegate{
+//    func zohosignClientDidFinishSigning(signID: String) {
+//        //Success Handling
+//    }
+//    
+//    func zohosignClientDidFailed(error: ZSError) {
+//        //Error handling
+//    }
+//    
+//    func zohosignClientDidSigningCancelledByUser() {
+//        //User cancelled
+//    }
+//}
+//
+//
+//extension ViewController : ZohoSignClientDataSource{
+//    func requestUserAgent() -> String {
+//        /*var systemVersion = UIDevice.current.systemVersion
+//        var systemModel = UIDevice.current.model
+//        if DeviceType.isMac {
+//            systemVersion = ProcessInfo.processInfo.operatingSystemVersionString
+//            systemModel   = "Mac OS X"
+//        }
+//        
+//        let userAgent_string = String(format: "Zoho Sign/%@(%@)/%@(%@)", Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String,
+//                                      Bundle.main.infoDictionary?["CFBundleVersion"] as! String,
+//                                      systemModel, systemVersion)
+//         return userAgent_string
+//         */
+//        return "ZohoSignSDK Example (1.0)"
+//    }
+//    
+//    func clientAppId() -> String {
+//        return "com.example.test" //just for our reference and track
+//    }
+//    
+//}
+//
