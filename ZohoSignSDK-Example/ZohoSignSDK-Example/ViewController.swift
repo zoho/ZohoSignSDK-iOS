@@ -9,17 +9,16 @@ import UIKit
 import ZohoSignSDK
 
 
-
 class ViewController: UIViewController {
 
-//    lazy var signClient : ZohoSignClient = {
-//        let zsClient = ZohoSignClient()
+    lazy var signClient : ZohoSignClient = {
+        let zsClient = ZohoSignClient()
 //        zsClient.delegate = self
 //        zsClient.dataSource = self
-//        zsClient.skipDocumentDetailsPage = true
-//        zsClient.skipTermsAndConditionPage = true
-//        return zsClient
-//    }()
+        zsClient.skipDocumentDetailsPage = true
+        zsClient.skipTermsAndConditionPage = true
+        return zsClient
+    }()
 //    
     @IBOutlet weak var signIDTextView: UITextView!
     override func viewDidLoad() {
@@ -31,7 +30,7 @@ class ViewController: UIViewController {
 
 
     @IBAction func signDocument(_ sender: Any) {
-//        signClient.presentSigningViewController(signID: signIDTextView.text ?? "", from: self)
+        signClient.presentSigningViewController(signID: signIDTextView.text ?? "", from: self)
     }
 }
 

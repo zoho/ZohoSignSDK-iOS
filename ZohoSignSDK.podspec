@@ -1,55 +1,46 @@
-#
-# Be sure to run `pod lib lint ZohoSignSDK.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'ZohoSignSDK'
-  s.version          = '1.0'
-  s.summary          = 'iOS SDK for eSigning Zoho Sign documents.'
+  s.version          = '1.0-beta'
+  s.summary          = 'iOS SDK for securely signing documents using Zoho Sign.'
+  s.description      = <<-DESC
+    ZohoSignSDK provides APIs for document signing, authentication, and secure workflows 
+    using Zoho Sign from iOS applications.
+  DESC
 
   s.homepage         = 'https://www.zoho.com/sign/'
   s.license          = { :type => 'Custom', :file => 'LICENSE' }
   s.author           = { 'ME Mobile' => 'memobile@zohocorp.com' }
-  s.source           = { :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git', :tag => s.version }
-  s.social_media_url = 'https://twitter.com/zohosign'
 
-  s.ios.deployment_target = '15.0'
+  s.source           = {
+    :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git',
+    :tag => s.version
+  }
 
- # s.source_files = 'ZohoSignSDK/ZohoSignSDK.xcframework'
-  s.ios.vendored_frameworks = "ZohoSignSDK/ZohoSignSDK.xcframework"
-  # s.preserve_paths   = "ZohoSignSDK/ZohoSignSDK.xcframework"
+  # Deployment Target
+  s.platform         = :ios, '15.5'
+
+  # Framework (static XCFramework recommended)
+  s.ios.vendored_frameworks = 'ZohoSignSDK/ZohoSignSDK.xcframework'
+  s.static_framework = true
+
   s.requires_arc = true
+  s.swift_versions = ['5.0', '5.1', '5.2', '5.3', '5.4', '5.5']
 
-  s.dependency 'AMPopTip'
-  s.dependency 'SSZipArchive'
-  s.dependency 'Alamofire'
-  s.dependency 'SVProgressHUD'
-  s.dependency 'SnapKit'
-  s.swift_versions = ['5.0']
+  # Dependencies (these will be dynamically resolved by CocoaPods)
+  s.dependency 'AMPopTip', '~> 4.12.0'
+  s.dependency 'SSZipArchive', '~> 2.5.0'
+  s.dependency 'Alamofire', '~> 5.10.0'
+  s.dependency 'SVProgressHUD', '~> 2.3.1'
+  s.dependency 'SnapKit', '~> 5.7.0'
 
+  # Build & Compatibility Settings
   s.pod_target_xcconfig = {
     'BUILD_LIBRARY_FOR_DISTRIBUTION' => 'YES',
-    'LD_RUNPATH_SEARCH_PATHS' => '$(inherited) @executable_path/Frameworks @loader_path/Frameworks',
-    'OTHER_LDFLAGS' => '$(inherited) -ObjC'
+    'SWIFT_COMPILATION_MODE' => 'wholemodule',
+    'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => ''
   }
 
   s.user_target_xcconfig = {
-    'LD_RUNPATH_SEARCH_PATHS' => '$(inherited) @executable_path/Frameworks @loader_path/Frameworks',
-    'OTHER_LDFLAGS' => '$(inherited) -ObjC'
+    'IPHONEOS_DEPLOYMENT_TARGET' => '15.5'
   }
-
-  # s.pod_target_xcconfig = {
-  #   'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64'
-  # }
-  # s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
-
-  # s.resource_bundles = {
-  #   'ZohoSignSDK' => ['ZohoSignSDK/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
 end
