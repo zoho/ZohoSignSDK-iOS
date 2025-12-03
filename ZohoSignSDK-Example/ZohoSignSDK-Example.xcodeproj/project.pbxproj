@@ -365,6 +365,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3U32PYBF7X;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = KP922CW47K;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				INFOPLIST_FILE = "ZohoSignSDK-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
@@ -375,6 +376,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zoho.ZohoSignSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Global Wildcard ME Development Profile";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Global Wildcard Development Profile";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
@@ -393,6 +395,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3U32PYBF7X;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = KP922CW47K;
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = "";
 				INFOPLIST_FILE = "ZohoSignSDK-Example/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
@@ -403,6 +406,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.zoho.ZohoSignSDK-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Global Wildcard ME Development Profile";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Global Wildcard Development Profile";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;

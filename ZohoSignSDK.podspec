@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ZohoSignSDK'
-  s.version          = '1.0-beta'
+  s.version          = '1.0'
   s.summary          = 'iOS SDK for securely signing documents using Zoho Sign.'
   s.description      = <<-DESC
     ZohoSignSDK provides APIs for document signing, authentication, and secure workflows 
@@ -27,11 +27,11 @@ Pod::Spec.new do |s|
   s.swift_versions = ['5.0', '5.1', '5.2', '5.3', '5.4', '5.5']
 
   # Dependencies (these will be dynamically resolved by CocoaPods)
-  s.dependency 'AMPopTip', '~> 4.12.0'
-  s.dependency 'SSZipArchive', '~> 2.5.0'
-  s.dependency 'Alamofire', '~> 5.10.0'
-  s.dependency 'SVProgressHUD', '~> 2.3.1'
-  s.dependency 'SnapKit', '~> 5.7.0'
+  s.dependency 'AMPopTip'
+  s.dependency 'SSZipArchive'
+  s.dependency 'Alamofire'
+  s.dependency 'SVProgressHUD'
+  s.dependency 'SnapKit'
 
   # Build & Compatibility Settings
   s.pod_target_xcconfig = {
