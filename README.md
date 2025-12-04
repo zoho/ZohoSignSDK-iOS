@@ -59,7 +59,7 @@ class MyViewController: UIViewController {
     }()
 
     func signDocument() {
-          signClient.presentSigningViewController(signID: #DOCUMENT_SIGN_ID_TO_BE_SIGNED#, 
+          signClient.presentSigningViewController(signID: #DOCUMENT_SIGN_ID_TO_BE_SIGNED#, baseURL: #SIGN_BASE_URL,
                      from: self)
     }
 
