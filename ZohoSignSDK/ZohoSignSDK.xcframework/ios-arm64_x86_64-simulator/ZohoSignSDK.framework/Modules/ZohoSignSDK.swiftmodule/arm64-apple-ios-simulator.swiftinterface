@@ -2,6 +2,7 @@
 // swift-compiler-version: Apple Swift version 6.2.1 effective-5.10 (swiftlang-6.2.1.4.8 clang-1700.4.4.1)
 // swift-module-flags: -target arm64-apple-ios15.5-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name ZohoSignSDK
 // swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.1
+import AMPopTip
 import AVFoundation
 import AVKit
 import Alamofire
@@ -135,7 +136,7 @@ public class ZohoSignClient {
     get
     set
   }
-  public func presentSigningViewController(signID: Swift.String, from rootViewcontroller: UIKit.UIViewController)
+  public func presentSigningViewController(signID: Swift.String, baseURL: Swift.String = "https://sign.zoho.com", from rootViewcontroller: UIKit.UIViewController)
   @objc deinit
 }
 public typealias AttachmentCoreDataClassSet = Foundation.NSSet

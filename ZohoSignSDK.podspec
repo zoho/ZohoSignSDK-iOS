@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ZohoSignSDK'
-  s.version          = '1.0'
+  s.version          = '1.0.1'
   s.summary          = 'iOS SDK for securely signing documents using Zoho Sign.'
   s.description      = <<-DESC
     ZohoSignSDK provides APIs for document signing, authentication, and secure workflows 

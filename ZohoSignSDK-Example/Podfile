@@ -6,15 +6,7 @@ target 'ZohoSignSDK-Example' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for ZohoSignSDK-Example
-  pod 'ZohoSignSDK', '1.0'
-#  pod 'SSZipArchive'
-#  pod 'AMPopTip'
-##  pod 'MenuItemKit'
-#  pod 'Alamofire'
-#  pod 'SVProgressHUD'
-#  pod 'SnapKit'
-#pod 'ZohoSignSDK', :git => 'https://github.com/zoho/ZohoSignSDK-iOS.git'
+  pod 'ZohoSignSDK', '1.0.1'
 
 end
 
