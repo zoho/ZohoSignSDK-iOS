@@ -15,7 +15,7 @@ ZohoSignSDK provides easy to use of methods to sign a document with your iOS Mob
  
 ## Requirements
 
-* iOS 11.0+ 
+* iOS 16.0+ 
 * Xcode 10.0+
 * Swift 5.0+
 
@@ -25,11 +25,11 @@ Installation using Cocoapods
 You can integrate ZohoSignSDK in your application using [CocoaPods](https://cocoapods.org) using the ZohoSignSDK pod. Here is an example Podfile where ZohoSignSDK is included.
 
 ```ruby
-platform :ios, '11.0'
+platform :ios, '16.0'
 
 target 'Project Target' do
   use_frameworks!
-  pod 'ZohoSignSDK', '~> 1.0.3-Beta'
+  pod 'ZohoSignSDK', '~> 1.0.1'
 end
 ```
 
