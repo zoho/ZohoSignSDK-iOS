@@ -29,7 +29,10 @@ class ViewController: UIViewController {
 
 
     @IBAction func signDocument(_ sender: Any) {
-        signClient.presentSigningViewController(signID: signIDTextView.text ?? "", from: self)
+        signClient.presentSigningViewController(
+            signID: signIDTextView.text ?? "",
+            baseURL: "https://sign.zoho.com",
+            from: self)
     }
 }
 
